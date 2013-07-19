@@ -20,7 +20,7 @@
     (console/log f2-content)
     (console/log f3-content)))
 
-(defn test-chain [file]
+(defn test-nested [file]
   (asynchronize
     (def contents (.readFile fs (.readFile fs (.readFile fs file "utf8" ...) "utf8" ...) "utf8" ...))
     (console/log contents)))
