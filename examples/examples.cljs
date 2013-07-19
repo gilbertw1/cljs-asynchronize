@@ -6,12 +6,13 @@
 
 (def fs (node/require "fs"))
 
-;(defasync print-files [& files]
-;  (def contents (map #(.readFile fs % "utf8" ...) files))
-;  (doseq [content contents] (console/log content)))
+(defn print-files [& files]
+  (asynchronize
+    (def contents (map #(.readFile fs % "utf8" ...) files))
+    (doseq [content contents] (console/log content))))
 
 (defn print-three-files [f1 f2 f3]
-  (async
+  (asynchronize
     (def f1-content (.readFile fs f1 "utf8" ...))
     (def f2-content (.readFile fs f2 "utf8" ...))
     (def f3-content (.readFile fs f3 "utf8" ...))
@@ -20,7 +21,7 @@
     (console/log f3-content)))
 
 (defn test-chain [file]
-  (async
+  (asynchronize
     (def contents (.readFile fs (.readFile fs (.readFile fs file "utf8" ...) "utf8" ...) "utf8" ...))
     (console/log contents)))
 

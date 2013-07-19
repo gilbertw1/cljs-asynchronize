@@ -1,4 +1,4 @@
-(ns cljs-defasync.macros)
+(ns cljs-defasynchronize.macros)
 
 (defn- add-argument-last [form arg]
   `(~@form ~arg))
@@ -17,7 +17,7 @@
       (map #(transform % c) forms))
     forms))
 
-(defmacro async [& forms]
+(defmacro asynchronize [& forms]
   (let [c (gensym)]
     `(let [~c (cljs.core.async/chan)]
       (cljs.core.async.macros/go
