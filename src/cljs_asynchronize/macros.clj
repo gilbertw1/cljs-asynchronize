@@ -1,4 +1,4 @@
-(ns cljs-defasynchronize.macros)
+(ns cljs-asynchronize.macros)
 
 (defn- add-argument-last [form arg]
   `(~@form ~arg))
