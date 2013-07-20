@@ -1,7 +1,7 @@
 (ns cljs-asynchronize.example
   (:require [cljs.nodejs :as node]
             [cljs.core.async])
-  (:require-macros [cljs-defasync.macros :as dm :refer [async]]
+  (:require-macros [cljs-asynchronize.macros :as dm :refer [asynchronize]]
                    [cljs.core.async.macros :as am :refer [go]]))
 
 (def fs (node/require "fs"))
