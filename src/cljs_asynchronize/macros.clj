@@ -23,7 +23,7 @@
 (defn- transform [forms]
   (if (list? forms)
     (if (= (last forms) '...)
-      (let [sc (gensym) fc (gensym)]
+      (let [sc (gensym) fc (gensym)] ; sc -> success, fc -> fail
         `(let [~sc (cljs.core.async/chan) ~fc (cljs.core.async/chan)]
            (do 
              ~(add-argument-last (map transform (butlast forms)) (callback sc fc))
@@ -32,6 +32,5 @@
     forms))
 
 (defmacro asynchronize [& forms]
-  (let [c (gensym)]
-    `(cljs.core.async.macros/go
-      ~@(map transform forms))))
+  `(cljs.core.async.macros/go
+    ~@(map transform forms)))
