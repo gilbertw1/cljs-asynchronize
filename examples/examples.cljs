@@ -27,6 +27,6 @@
 
 (defn test []
   (print-three-files "file1.txt" "file2.txt" "file3.txt")
-  (test-chain "file1.txt"))
+  (test-nested "file1.txt"))
 
 (set! *main-cli-fn* test)
